@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Icon Generator</title>
+</head>
+<body>
+  <canvas id="canvas" width="256" height="256"></canvas>
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+    
+    // 背景渐变
+    const gradient = ctx.createLinearGradient(0, 0, 256, 256);
+    gradient.addColorStop(0, '#667eea');
+    gradient.addColorStop(1, '#764ba2');
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, 256, 256);
+    
+    // 龙虾 emoji
+    ctx.font = '180px Arial';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = 'white';
+    ctx.fillText('🦞', 128, 128);
+    
+    // 下载
+    const dataURL = canvas.toDataURL('image/png');
+    console.log(dataURL);
+  </script>
+</body>
+</html>

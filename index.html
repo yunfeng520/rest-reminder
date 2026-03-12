@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'">
+  <title>休息提醒助手</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <!-- 头部 -->
+    <div class="header">
+      <div class="logo">🦞</div>
+      <h1>休息提醒助手</h1>
+      <p class="subtitle">龙虾编辑部出品</p>
+    </div>
+
+    <!-- 计时器显示 -->
+    <div class="timer-section">
+      <div class="timer-display" id="timerDisplay">
+        <div class="timer-label" id="timerLabel">准备工作</div>
+        <div class="timer-time" id="timerTime">45:00</div>
+      </div>
+      
+      <div class="timer-status" id="timerStatus">
+        <span class="status-dot"></span>
+        <span class="status-text">就绪</span>
+      </div>
+    </div>
+
+    <!-- 控制按钮 -->
+    <div class="controls">
+      <button class="btn btn-primary" id="startWorkBtn">
+        <span class="btn-icon">⏰</span>
+        开始工作
+      </button>
+      <button class="btn btn-secondary" id="startRestBtn" disabled>
+        <span class="btn-icon">☕</span>
+        开始休息
+      </button>
+      <button class="btn btn-danger" id="stopBtn" disabled>
+        <span class="btn-icon">⏹️</span>
+        停止
+      </button>
+    </div>
+
+    <!-- 进度条 -->
+    <div class="progress-section">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-text">
+        <span id="progressText">0%</span>
+      </div>
+    </div>
+
+    <!-- 设置区域 -->
+    <div class="settings-section">
+      <h2>⚙️ 设置</h2>
+      
+      <div class="setting-item">
+        <label for="workDuration">工作时长（分钟）</label>
+        <input type="number" id="workDuration" min="1" max="180" value="45">
+      </div>
+      
+      <div class="setting-item">
+        <label for="restDuration">休息时长（分钟）</label>
+        <input type="number" id="restDuration" min="1" max="60" value="5">
+      </div>
+      
+      <div class="setting-item checkbox">
+        <input type="checkbox" id="enableLock">
+        <label for="enableLock">休息时锁定屏幕</label>
+      </div>
+      
+      <div class="setting-item checkbox">
+        <input type="checkbox" id="sound" checked>
+        <label for="sound">播放提示音</label>
+      </div>
+      
+      <button class="btn btn-save" id="saveSettingsBtn">
+        💾 保存设置
+      </button>
+    </div>
+
+    <!-- 统计信息 -->
+    <div class="stats-section">
+      <h2>📊 今日统计</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="workCount">0</div>
+          <div class="stat-label">工作次数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="restCount">0</div>
+          <div class="stat-label">休息次数</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="totalWorkTime">0</div>
+          <div class="stat-label">工作分钟</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="totalRestTime">0</div>
+          <div class="stat-label">休息分钟</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+      <p>💡 提示：关闭窗口会最小化到系统托盘</p>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
